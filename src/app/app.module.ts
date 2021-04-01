@@ -16,8 +16,8 @@ const appRoutes: Routes = [
   { path: 'inscription', component: InscriptionComponent },
   { path: '', component: AppComponent },
   { path: 'not-found', component: QuatreZeroQuatreComponent },
-  { path: '**', redirectTo: 'not-found' }
-  { path: 'posteMini', component: PosteMiniComponent },
+  { path: '**', redirectTo: 'not-found' },
+  { path: 'posteMini', component: PosteMiniComponent }
 ];
 
 @NgModule({
