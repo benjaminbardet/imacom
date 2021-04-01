@@ -7,7 +7,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
-<body>
-  <app-root></app-root>
+<body class="d-flex flex-column h-100">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <img src="https://images.squarespace-cdn.com/content/v1/5c174d3b3c3a533f50c8b4b0/1553237022273-GG8T4BTAC3ER1AHLZKBY/ke17ZwdGBToddI8pDm48kP06O0_IHyRXSOOiqwgWaApZw-zPPgdn4jUwVcJE1ZvWEtT5uBSRWt4vQZAgTJucoTqqXjS3CfNDSuuf31e0tVEsL0EX72Q6S7TgfQYQBQpkz5xM6Qt8VXd_xJGg_ziCFib8BodarTVrzIWCp72ioWw/instagram-social-outlined-logo.png" alt="exemple de texte alternatif"/>
+    <a class="ml-3 navbar-brand" href="#"><h1 class="text-white">imaCom</h1></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="ml-auto navbar-nav">
+        <li class="m-2 nav-item active">
+          <a class="nav-link text-white " href="#">Rechercher <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="m-2 nav-item">
+          <a class="nav-link text-white" href="#">Ma gallerie</a>
+        </li>
+        <li class="m-2 nav-item">
+          <a class="nav-link text-white" href="#">Connexion</a>
+        </li>
+        <li class="m-2 mr-5 nav-item">
+          <a class="nav-link text-white" href="#">Inscription</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div id="main" class="p-5 d-flex flex-grow-1">
+    <div id="block" class="d-flex flex-grow-1">
+      <app-root></app-root>
+    </div>
+  </div>
 </body>
 </html>
