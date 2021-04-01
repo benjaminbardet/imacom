@@ -14,7 +14,6 @@ import { InscriptionComponent } from './auth/inscription/inscription.component';
 const appRoutes: Routes = [
   { path: 'connexion', component: ConnexionComponent },
   { path: 'inscription', component: InscriptionComponent },
-  { path: '', component: AppComponent },
   { path: 'not-found', component: QuatreZeroQuatreComponent },
   { path: '**', redirectTo: 'not-found' },
   { path: 'posteMini', component: PosteMiniComponent }
