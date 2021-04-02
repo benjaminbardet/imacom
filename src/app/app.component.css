@@ -1,4 +1,4 @@
-img {
+.logo {
   width: 3%;
   min-width: 60px;
   min-height: 60px;
@@ -18,11 +18,4 @@ nav {
 #main {
   background: linear-gradient(#e66465, #9198e5);
 }
-
-#block {
-  background-color: azure;
-  border-radius: 0.25em;
-  box-shadow: 2px 2px 10px 1px #662424;
-}
-
 
