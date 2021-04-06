@@ -13,6 +13,7 @@ export class AppComponent {
     const config = {
       apiKey: 'AIzaSyCCUi3YyILD9iMxI86VR3UXFXPfEy32440',
       authDomain: 'imacomdotcom.firebaseapp.com',
+      databaseURL: 'https://imacomdotcom-default-rtdb.europe-west1.firebasedatabase.app/',
       projectId: 'imacomdotcom',
       storageBucket: 'imacomdotcom.appspot.com',
       messagingSenderId: '232411724720',
