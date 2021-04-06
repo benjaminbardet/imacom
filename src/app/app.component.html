@@ -14,11 +14,14 @@
         <li class="m-2 nav-item">
           <a class="nav-link text-white" href="#">Ma gallerie</a>
         </li>
-        <li class="m-2 nav-item">
+        <li *ngIf="!isAuth" class="m-2 nav-item">
           <a class="nav-link text-white" routerLink="connexion">Connexion</a>
         </li>
-        <li class="m-2 mr-5 nav-item">
+        <li *ngIf="!isAuth" class="m-2 mr-5 nav-item">
           <a class="nav-link text-white" routerLink="inscription">Inscription</a>
+        </li>
+        <li *ngIf="isAuth" class="m-2 nav-item">
+          <a class="nav-link text-white" (click)="onSignOut()">Déconnexion</a>
         </li>
       </ul>
     </div>
