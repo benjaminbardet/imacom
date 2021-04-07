@@ -1,15 +1,15 @@
 
 <div id="block" class="p-5 m-3">
   <H1 class="text-center">Poster une image</H1>
-  <form>
+  <form [formGroup]="posteForm" (ngSubmit)="onSavePostes()">
     <div class="container py-5">
       <div class="row py-4">
         <div class="col-lg-6 mx-auto">
           <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
-            <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0">
-            <label id="upload-label" for="upload" class="font-weight-light text-muted">image.png</label>
+            <input id="image" type="file" onchange="readURL(this);" class="form-control border-0">
+            <label id="upload-label" for="image" class="font-weight-light text-muted">image.png</label>
             <div class="input-group-append">
-              <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Choisir Image</small></label>
+              <label for="image" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Choisir Image</small></label>
             </div>
           </div>
           <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
@@ -17,8 +17,8 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="inputTitre">titre</label>
-      <input type="text" class="form-control" id="inputTitre" required>
+      <label for="titre">titre</label>
+      <input type="text" class="form-control" id="titre" required>
     </div>
     <div class="form-group">
       <label for="inputDescription">Description</label>
@@ -26,23 +26,23 @@
     </div>
     <div class="form-row">
       <div class="form-group col-md-4">
-        <label for="inputCategorie">Catégorie</label>
-        <select id="inputCategorie" class="form-control">
+        <label for="categorie">Catégorie</label>
+        <select id="categorie" class="form-control">
           <option selected>Photographie</option>
           <option>image</option>
           <option>peinture</option>
         </select>
       </div>
       <div class="form-group col-md-4">
-        <label for="inputPays">Pays</label>
-        <select id="inputPays" class="form-control">
+        <label for="pays">Pays</label>
+        <select id="pays" class="form-control">
           <option selected>France</option>
           <option>Autre</option>
         </select>
       </div>
       <div class="form-group col-md-4">
-        <label for="inputVille">Ville</label>
-        <select id="inputVille" class="form-control">
+        <label for="ville">Ville</label>
+        <select id="ville" class="form-control">
           <option selected>Le mans</option>
           <option>Belfort</option>
           <option>Paris</option>
@@ -51,16 +51,16 @@
     </div>
     <div class="form-group">
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck">
-        <label class="form-check-label" for="gridCheck">
+        <input class="form-check-input" type="checkbox" id="isPublic">
+        <label class="form-check-label" for="isPublic">
           Public
         </label>
       </div>
     </div>
-    <button type="submit" class="btn btn-primary"> Créer un post</button>
+    <button class="btn btn-success" [disabled]="posteForm.invalid"
+            type="submit">Enregistrer
+    </button>
   </form>
 </div>
-
-
 
 

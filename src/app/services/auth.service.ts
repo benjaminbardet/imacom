@@ -1,25 +1,35 @@
-import { Injectable } from '@angular/core';
+import {Injectable, NgZone} from '@angular/core';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import { User } from '../models/user.models';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() { }
+  user: User;
+
+  constructor(
+    public router: Router,
+    public ngZone: NgZone
+  ) {
+    this.user = null;
+  }
 
   createNewUser(email: string, password: string): any {
     return new Promise<void>(
       (resolve, reject) => {
-        firebase.auth().createUserWithEmailAndPassword(email, password).then(
-          () => {
-            resolve();
-          },
-          (error) => {
-            reject(error);
-          }
-        );
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+          .then((result) => {
+            this.ngZone.run(() => {
+              this.router.navigate(['']);
+            });
+            this.SetUser(result.user);
+          }).catch((error) => {
+          window.alert(error.message);
+        });
       }
     );
   }
@@ -27,14 +37,15 @@ export class AuthService {
   signInUser(email: string, password: string): any {
     return new Promise<void>(
       (resolve, reject) => {
-        firebase.auth().signInWithEmailAndPassword(email, password).then(
-          () => {
-            resolve();
-          },
-          (error) => {
-            reject(error);
-          }
-        );
+        firebase.auth().signInWithEmailAndPassword(email, password)
+          .then((result) => {
+            this.ngZone.run(() => {
+              this.router.navigate(['']);
+            });
+            this.SetUser(result.user);
+          }).catch((error) => {
+          window.alert(error.message);
+        });
       }
     );
   }
@@ -43,4 +54,17 @@ export class AuthService {
   signOutUser() {
     firebase.auth().signOut();
   }
+
+  SetUser(user): void {
+    const userData: User = {
+      id: user.uid,
+      email: user.email
+    };
+    this.user = userData;
+  }
+
+  getUser(): User {
+    return this.user;
+  }
+
 }
