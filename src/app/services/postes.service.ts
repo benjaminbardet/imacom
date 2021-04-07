@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Poste } from '../models/poste.model';
 import firebase from 'firebase/app';
+import 'firebase/database';
 import DataSnapshotA = firebase.database.DataSnapshot;
 import {Subject} from 'rxjs';
 
@@ -62,7 +63,7 @@ export class PostesService {
 
 
   constructor() {
-    this.getPostes();
+    // this.getPostes();
   }
 
 }

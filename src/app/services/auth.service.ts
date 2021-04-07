@@ -57,7 +57,7 @@ export class AuthService {
 
   SetUser(user): void {
     const userData: User = {
-      id: user.uid,
+      uid: user.uid,
       email: user.email
     };
     this.user = userData;

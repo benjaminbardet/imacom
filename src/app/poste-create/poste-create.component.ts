@@ -24,18 +24,20 @@ export class PosteCreateComponent implements OnInit {
 
   initForm(): void {
     this.posteForm = this.formBuilder.group({
-      title: ['', Validators.required],
+      titre: ['', Validators.required],
       description: ['', Validators.required],
-      image: ['', Validators.required],
+      image: '',
       ville: ['', Validators.required],
       pays: ['', Validators.required],
-      categorie: ['', Validators.required]
+      categorie: ['', Validators.required],
+      estPublic: ''
+
     });
   }
 
   onSavePostes(): void {
-    const title = this.posteForm.get('title').value;
-    const author = this.authService.user.id;
+    const title = this.posteForm.get('titre').value;
+    const author = this.authService.getUser().uid;
     const description = this.posteForm.get('description').value;
     const categorie = this.posteForm.get('categorie').value;
     const ville = this.posteForm.get('ville').value;

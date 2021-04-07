@@ -4,12 +4,11 @@
   <meta charset="utf-8">
   <title>Imacon</title>
   <base href="/">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/x-icon" href="favicons/favicon.ico">
 </head>
 <div>
   <app-root></app-root>
 </html>
-
 <script>
   /*  ==========================================
     SHOW UPLOADED IMAGE
@@ -26,22 +25,4 @@
     }
   }
 
-  $(function () {
-    $('#upload').on('change', function () {
-      readURL(input);
-    });
-  });
-
-  /*  ==========================================
-      SHOW UPLOADED IMAGE NAME
-  * ========================================== */
-  var input = document.getElementById( 'upload' );
-  var infoArea = document.getElementById( 'upload-label' );
-
-  input.addEventListener( 'change', showFileName );
-  function showFileName( event ) {
-    var input = event.srcElement;
-    var fileName = input.files[0].name;
-    infoArea.textContent = 'File name: ' + fileName;
-  }
 </script>

@@ -1,5 +1,8 @@
 .card {
-    margin : 1em;
+  
+    margin : 0.2em;
+    margin-top: 1em;
+  
 }
 
 .btn {
@@ -20,8 +23,8 @@
     transition: .5s ease;
     opacity: 0;
     position: absolute;
-    top: 30%;
-    left: 50%;
+    top: 25%;
+    left: 53%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%)
   }
