@@ -10,6 +10,9 @@ import { AppComponent } from './app.component';
 import { PosteMiniComponent } from './poste-mini/poste-mini.component';
 import { ConnexionComponent } from './auth/connexion/connexion.component';
 import { InscriptionComponent } from './auth/inscription/inscription.component';
+import { GallerieComponent } from './gallerie/gallerie.component';
+import { MyGallerieComponent } from './my-gallerie/my-gallerie.component';
+import { SearchGallerieComponent } from './search-gallerie/search-gallerie.component';
 
 const appRoutes: Routes = [
   { path: 'connexion', component: ConnexionComponent },
@@ -27,6 +30,9 @@ const appRoutes: Routes = [
     ConnexionComponent,
     InscriptionComponent,
     QuatreZeroQuatreComponent,
+    GallerieComponent,
+    MyGallerieComponent,
+    SearchGallerieComponent,
   ],
   imports: [
     BrowserModule,

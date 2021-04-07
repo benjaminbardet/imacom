@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PosteMiniComponent } from './poste-mini.component';
+import { MyGallerieComponent } from './my-gallerie.component';
 
-describe('PosteMiniComponent', () => {
-  let component: PosteMiniComponent;
-  let fixture: ComponentFixture<PosteMiniComponent>;
+describe('MyGallerieComponent', () => {
+  let component: MyGallerieComponent;
+  let fixture: ComponentFixture<MyGallerieComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PosteMiniComponent ]
+      declarations: [ MyGallerieComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PosteMiniComponent);
+    fixture = TestBed.createComponent(MyGallerieComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -23,4 +23,3 @@ describe('PosteMiniComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-
