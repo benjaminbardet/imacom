@@ -14,6 +14,9 @@ export class PosteCreateComponent implements OnInit {
 
 
   posteForm: FormGroup;
+  fileIsUploading = false;
+  fileUrl: string;
+  fileUploaded = false;
 
   constructor(private formBuilder: FormBuilder, private postesService: PostesService,
               private authService: AuthService, private router: Router) { }
@@ -43,14 +46,37 @@ export class PosteCreateComponent implements OnInit {
     const ville = this.posteForm.get('ville').value;
     const pays = this.posteForm.get('pays').value;
     const image = this.posteForm.get('image').value;
+    console.log(this.posteForm.get('estPublic').value);
     const newPoste = new Poste(title, author);
     newPoste.description = description;
     newPoste.categorie = categorie;
     newPoste.pays = pays;
     newPoste.ville = ville;
-    newPoste.image = image;
+    if (this.posteForm.get('estPublic').value === 'true'){
+      newPoste.estPublic = true;
+    }else{
+      newPoste.estPublic = false;
+    }
+    if (this.fileUrl && this.fileUrl !== '') {
+      newPoste.image = this.fileUrl;
+    }
     this.postesService.createNewPoste(newPoste);
     this.router.navigate(['/']);
+  }
+
+  onUploadFile(file: File): void {
+    this.fileIsUploading = true;
+    this.postesService.uploadFile(file).then(
+      (url: string) => {
+        this.fileUrl = url;
+        this.fileIsUploading = false;
+        this.fileUploaded = true;
+      }
+    );
+  }
+
+  detectFiles(event): void {
+    this.onUploadFile(event.target.files[0]);
   }
 
 }

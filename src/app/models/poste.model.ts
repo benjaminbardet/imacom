@@ -4,6 +4,7 @@ export class Poste {
   categorie: string;
   ville: string;
   pays: string;
+  estPublic: boolean;
   constructor(public title: string, public author: string) {
   }
 }
