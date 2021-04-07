@@ -11,6 +11,9 @@ import { AppComponent } from './app.component';
 import { PosteMiniComponent } from './poste-mini/poste-mini.component';
 import { ConnexionComponent } from './auth/connexion/connexion.component';
 import { InscriptionComponent } from './auth/inscription/inscription.component';
+import { GallerieComponent } from './gallerie/gallerie.component';
+import { MyGallerieComponent } from './my-gallerie/my-gallerie.component';
+import { SearchGallerieComponent } from './search-gallerie/search-gallerie.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import {AuthGuardService} from './services/auth-guard.service';
 
@@ -18,6 +21,7 @@ const appRoutes: Routes = [
   { path: 'connexion', component: ConnexionComponent },
   { path: 'inscription', component: InscriptionComponent },
   { path: '', canActivate: [AuthGuardService], component: AccueilComponent },
+  { path: 'magallerie', canActivate: [AuthGuardService], component: MyGallerieComponent },
   { path: 'not-found', component: QuatreZeroQuatreComponent },
   { path: '**', redirectTo: 'not-found' },
   { path: 'posteMini', component: PosteMiniComponent }
@@ -30,6 +34,9 @@ const appRoutes: Routes = [
     ConnexionComponent,
     InscriptionComponent,
     QuatreZeroQuatreComponent,
+    GallerieComponent,
+    MyGallerieComponent,
+    SearchGallerieComponent,
     AccueilComponent,
   ],
   imports: [
