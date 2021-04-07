@@ -64,7 +64,7 @@ export class PostesService {
 
 
   constructor() {
-    // this.getPostes();
+    this.getPostes();
   }
 
   uploadFile(file: File): any {
