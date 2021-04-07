@@ -10,9 +10,9 @@ export class PosteMiniComponent {
   isPublisherAuthentified = true;
   isLikedByAuthentifiedUser = false;
   @Input() description:string= "";
-  @Input()title:string = "";
-  @Input()image:string = "";
-
+  @Input() title:string = "";
+  @Input() image:string = "";
+ 
   setIsPublisherAuthentified(): void{
     // verify if author of the current post is the authentified user
   }

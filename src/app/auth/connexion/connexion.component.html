@@ -1,25 +1,35 @@
-<div class="row">
-  <div class="col-sm-8 col-sm-offset-2">
-    <h2>Connexion</h2>
-    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="email">Adresse mail</label>
-        <input type="text"
-               id="email"
-               class="form-control"
-               formControlName="email">
+
+
+
+<div class="card w-50" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Connexion</h5>
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="email">Adresse mail</label>
+            <input type="text"
+                   id="email"
+                   class="form-control"
+                   formControlName="email">
+          </div>
+          <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input type="password"
+                   id="password"
+                   class="form-control"
+                   formControlName="password">
+          </div>
+          <a [routerLink]="['/inscription']"style="font-size: 0.8em;"> Créer un compte</a> <br>
+          <button class="btn btn-primary"
+                  type="submit"
+                  style="margin-top: 10px;"
+                  [disabled]="signupForm.invalid">Connexion</button>
+        </form>
+        <p class="text-danger">{{ errorMessage }}</p>
       </div>
-      <div class="form-group">
-        <label for="password">Mot de passe</label>
-        <input type="password"
-               id="password"
-               class="form-control"
-               formControlName="password">
-      </div>
-      <button class="btn btn-primary"
-              type="submit"
-              [disabled]="signupForm.invalid">Connexion</button>
-    </form>
-    <p class="text-danger">{{ errorMessage }}</p>
+    </div>
   </div>
 </div>

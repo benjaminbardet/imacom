@@ -42,6 +42,66 @@ export class GallerieComponent implements OnInit {
       title: 'Lac between mounstains chain',
       description: 'Here is a pictur I took last year during my trip to High Sierra.',
       image: "https://picsum.photos/1920/1080/"
+    },
+    {
+      cardId: 4,
+      title: 'Lac between mounstains chain',
+      description: 'Here is a pictur I took last year during my trip to High Sierra.',
+      image: "https://picsum.photos/1920/1080/"
+    },
+    {
+      cardId: 4,
+      title: 'Lac between mounstains chain',
+      description: 'Here is a pictur I took last year during my trip to High Sierra.',
+      image: "https://picsum.photos/1920/1080/"
+    },
+    {
+      cardId: 4,
+      title: 'Lac between mounstains chain',
+      description: 'Here is a pictur I took last year during my trip to High Sierra.',
+      image: "https://picsum.photos/1920/1080/"
+    },
+    {
+      cardId: 4,
+      title: 'Lac between mounstains chain',
+      description: 'Here is a pictur I took last year during my trip to High Sierra.',
+      image: "https://picsum.photos/1920/1080/"
+    },
+    {
+      cardId: 4,
+      title: 'Lac between mounstains chain',
+      description: 'Here is a pictur I took last year during my trip to High Sierra.',
+      image: "https://picsum.photos/1920/1080/"
+    },
+    {
+      cardId: 4,
+      title: 'Lac between mounstains chain',
+      description: 'Here is a pictur I took last year during my trip to High Sierra.',
+      image: "https://picsum.photos/1920/1080/"
+    },
+    {
+      cardId: 4,
+      title: 'Lac between mounstains chain',
+      description: 'Here is a pictur I took last year during my trip to High Sierra.',
+      image: "https://picsum.photos/1920/1080/"
+    },
+    {
+      cardId: 4,
+      title: 'Lac between mounstains chain',
+      description: 'Here is a pictur I took last year during my trip to High Sierra.',
+      image: "https://picsum.photos/1920/1080/"
+    },
+    {
+      cardId: 4,
+      title: 'Lac between mounstains chain',
+      description: 'Here is a pictur I took last year during my trip to High Sierra.',
+      image: "https://picsum.photos/1920/1080/"
+    },
+    {
+      cardId: 4,
+      title: 'Lac between mounstains chain',
+      description: 'Here is a pictur I took last year during my trip to High Sierra.',
+      image: "https://picsum.photos/1920/1080/"
     }
   ];
 }
