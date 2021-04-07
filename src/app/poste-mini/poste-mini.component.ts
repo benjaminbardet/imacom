@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import {PosteMaxiService} from "../services/poste-maxi.service";
 
 @Component({
   selector: 'app-poste-mini',
@@ -9,15 +10,18 @@ export class PosteMiniComponent {
 
   isPublisherAuthentified = true;
   isLikedByAuthentifiedUser = false;
-  @Input() description:string= "";
-  @Input()title:string = "";
-  @Input()image:string = "";
+  @Input() description = '';
+  @Input() title = '';
+  @Input() image = '';
+
+  constructor(private posteMaxi: PosteMaxiService) {
+  }
 
   setIsPublisherAuthentified(): void{
     // verify if author of the current post is the authentified user
   }
 
-  likedByUser (): void {
+  likedByUser(): void {
     // does everything to make the system know that authentified user has liked  the post
     this.isLikedByAuthentifiedUser = true;
   }
@@ -26,4 +30,11 @@ export class PosteMiniComponent {
     this.isLikedByAuthentifiedUser = false;
   }
 
+  isVisible(): boolean {
+    return this.posteMaxi.visible;
+  }
+
+  show(): void {
+    this.posteMaxi.visible = true;
+  }
 }

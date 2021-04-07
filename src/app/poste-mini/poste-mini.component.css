@@ -1,13 +1,12 @@
 .card {
-  
     margin : 0.2em;
-  
+
 }
 
 .btn {
     margin: 3px;
 }
-  
+
   #image {
     opacity: 1;
     display: block;
@@ -17,7 +16,7 @@
     transition: .5s ease;
     backface-visibility: hidden;
   }
-  
+
   .middle {
     transition: .5s ease;
     opacity: 0;
@@ -27,7 +26,7 @@
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%)
   }
-  
+
   #carte:hover .image {
     opacity: 0.3;
   }
@@ -36,7 +35,13 @@
     opacity: 0.3;
     transition: .5s ease;
   }
-  
+
   #carte:hover .middle {
     opacity: 1;
+  }
+
+  #viewModal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }

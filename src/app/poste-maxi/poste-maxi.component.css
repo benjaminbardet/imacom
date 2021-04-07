@@ -1,0 +1,33 @@
+:host {
+  width: 100vw;
+  height: 100vw;
+}
+#poste-maxi {
+  width: 100%;
+  height: calc(100% - 82px);
+  display: flex;
+  position: absolute;
+  top: 82px;
+  left: 0;
+}
+
+#image {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  flex: 1 1;
+}
+
+#image img {
+  object-fit: cover;
+  max-width: 70vw;
+  width: auto;
+  height: auto;
+}
+
+#description {
+  flex: 2 0 250px;
+  border-radius: inherit;
+  text-align: justify;
+  text-justify: inter-word;
+}
