@@ -26,4 +26,8 @@ export class PosteMiniComponent {
     this.isLikedByAuthentifiedUser = false;
   }
 
+  deletePost(): void {
+    //delete the post
+  }
+
 }
