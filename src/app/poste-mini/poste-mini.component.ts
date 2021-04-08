@@ -10,6 +10,7 @@ export class PosteMiniComponent {
 
   isPublisherAuthentified = true;
   isLikedByAuthentifiedUser = false;
+
   @Input() description = '';
   @Input() title = '';
   @Input() image = '';
@@ -37,4 +38,9 @@ export class PosteMiniComponent {
   show(): void {
     this.posteMaxi.visible = true;
   }
+
+  deletePost(): void {
+    // delete the post
+  }
+
 }
