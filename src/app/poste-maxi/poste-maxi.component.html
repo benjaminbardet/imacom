@@ -1,6 +1,6 @@
 <div id="poste-maxi">
   <div id="image">
-    <img [src]="poste.imgURL">
+    <img [src]="poste.image">
     <div class="right">
       <button id="likeBtn" type="button" class="btn btn-success " (click)="likedByUser()" title="Like post">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
@@ -32,7 +32,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <h6 class="card-subtitle mb-2 text-muted"> {{ poste.category }}</h6>
+      <h6 class="card-subtitle mb-2 text-muted"> {{ poste.categorie }}</h6>
       <p class="card-text">{{ poste.description }}</p>
     </div>
 </div>

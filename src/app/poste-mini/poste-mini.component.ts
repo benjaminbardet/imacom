@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {PosteMaxiService} from "../services/poste-maxi.service";
+import {PosteMaxiService} from '../services/poste-maxi.service';
 
 @Component({
   selector: 'app-poste-mini',
@@ -11,9 +11,7 @@ export class PosteMiniComponent {
   isPublisherAuthentified = true;
   isLikedByAuthentifiedUser = false;
 
-  @Input() description = '';
-  @Input() title = '';
-  @Input() image = '';
+  @Input() poste: any;
 
   constructor(private posteMaxi: PosteMaxiService) {
   }

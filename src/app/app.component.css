@@ -22,5 +22,9 @@ nav {
 
 #main {
   background: linear-gradient(#e66465, #9198e5);
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 82px;
 }
 
