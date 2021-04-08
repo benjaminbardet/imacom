@@ -6,9 +6,16 @@
   width: 100%;
   height: calc(100% - 82px);
   display: flex;
-  position: absolute;
+  position: fixed;
   top: 82px;
   left: 0;
+}
+
+#header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #image {
@@ -16,6 +23,7 @@
   justify-content: center;
   height: 100%;
   flex: 1 1;
+  position: relative;
 }
 
 #image img {
@@ -23,6 +31,7 @@
   max-width: 70vw;
   width: auto;
   height: auto;
+
 }
 
 #description {
@@ -30,4 +39,19 @@
   border-radius: inherit;
   text-align: justify;
   text-justify: inter-word;
+}
+
+#image:hover .right {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  margin: 5px;
+  transition: display;
+  transition-delay: 0.5s;
+}
+
+.right {
+  display: none;
 }

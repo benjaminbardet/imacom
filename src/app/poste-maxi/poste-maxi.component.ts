@@ -20,6 +20,12 @@ export class PosteMaxiComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  likedByUser(): void {
+  }
+
+  unlikedByUser(): void {
+  }
+
   hidden(): void {
     this.posteMaxi.visible = false;
   }
