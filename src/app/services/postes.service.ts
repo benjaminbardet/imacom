@@ -62,6 +62,19 @@ export class PostesService {
     this.emitPostes();
   }
 
+  recherche(titre: string): void {
+    for (const poste of this.Postes){
+      if (poste.title.includes(titre) || titre === null || titre === ''){
+        poste.recherche = true;
+        console.log('true' + poste.title);
+      }
+      else {
+        poste.recherche = false;
+        console.log('false ' + poste.title);
+      }
+    }
+  }
+
 
   constructor() {
     this.getPostes();

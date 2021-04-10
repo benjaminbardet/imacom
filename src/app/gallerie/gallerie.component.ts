@@ -23,6 +23,8 @@ export class GallerieComponent implements OnInit, OnDestroy{
       }
     );
     this.postesService.emitPostes();
+    console.log(this.galleryContent);
+    console.log(this.postesService.getPostes());
   }
 
   onDeleteBook(poste: Poste): void {
