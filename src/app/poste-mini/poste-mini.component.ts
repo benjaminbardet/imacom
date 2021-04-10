@@ -11,6 +11,8 @@ export class PosteMiniComponent {
   isPublisherAuthentified = true;
   isLikedByAuthentifiedUser = false;
 
+  visibleMaxi = false;
+
   @Input() poste: any;
 
   constructor(private posteMaxi: PosteMaxiService) {
@@ -29,12 +31,9 @@ export class PosteMiniComponent {
     this.isLikedByAuthentifiedUser = false;
   }
 
-  isVisible(): boolean {
-    return this.posteMaxi.visible;
-  }
-
   show(): void {
-    this.posteMaxi.visible = true;
+    console.log(this.poste);
+    this.poste.posteMaxi = true;
   }
 
   deletePost(): void {
