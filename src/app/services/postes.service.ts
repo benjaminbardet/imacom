@@ -18,6 +18,7 @@ export class PostesService {
 
   savePostes(): void {
     firebase.database().ref('/postes').update(this.Postes);
+    firebase.database().ref('/users/' + localStorage.getItem('token') + '/postes/' + (this.Postes.length-1)).set(this.Postes[this.Postes.length- 1]);
   }
 
   getPostes(): void {

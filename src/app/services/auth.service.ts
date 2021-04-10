@@ -42,6 +42,7 @@ export class AuthService {
             this.ngZone.run(() => {
               this.router.navigate(['']);
             });
+            localStorage.setItem('token', result.user.uid);
             this.SetUser(result.user);
           }).catch((error) => {
           window.alert(error.message);
@@ -60,6 +61,7 @@ export class AuthService {
       uid: user.uid,
       email: user.email
     };
+    localStorage.setItem('token', user.uid);
     this.user = userData;
   }
 
