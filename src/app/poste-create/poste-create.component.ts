@@ -34,7 +34,6 @@ export class PosteCreateComponent implements OnInit {
       pays: ['', Validators.required],
       categorie: ['', Validators.required],
       estPublic: ''
-
     });
   }
 

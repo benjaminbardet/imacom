@@ -1,7 +1,7 @@
 <div class="center">
     <div class="wrapper" >
-      <div *ngFor="let poste of galleryContent" [hidden]="!poste.recherche">
-        <app-poste-mini *ngIf="!poste.recherche" >
+      <div *ngFor="let poste of galleryContent" >
+        <app-poste-mini *ngIf="poste.recherche" >
         </app-poste-mini>
       </div>
     </div>
