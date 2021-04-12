@@ -18,13 +18,16 @@ export class GallerieComponent implements OnInit, OnDestroy{
 
   ngOnInit(): void{
     this.booksSubscription = this.postesService.PostesSubject.subscribe(
-      (postes: Poste[]) => {
-        this.galleryContent = postes;
+      (Postes: Poste[]) => {
+        this.galleryContent = Postes;
       }
     );
     this.postesService.emitPostes();
+    console.log('debug');
     console.log(this.galleryContent);
     console.log(this.postesService.getPostes());
+    console.log(this.postesService.PostesSubject);
+
   }
 
   onDeleteBook(poste: Poste): void {

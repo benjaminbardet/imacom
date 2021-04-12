@@ -4,7 +4,7 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/storage';
 import DataSnapshotA = firebase.database.DataSnapshot;
-import {Subject} from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class PostesService {
@@ -13,7 +13,8 @@ export class PostesService {
   PostesSubject = new Subject<Poste[]>();
 
   emitPostes(): void {
-    this.PostesSubject.next(this.Postes);
+    this.PostesSubject.next(this.Postes.slice());
+    console.log(this.Postes);
   }
 
   savePostes(): void {
