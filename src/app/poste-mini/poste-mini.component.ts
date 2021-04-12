@@ -32,7 +32,6 @@ export class PosteMiniComponent {
   }
 
   show(): void {
-    console.log(this.poste);
     this.poste.posteMaxi = true;
   }
 

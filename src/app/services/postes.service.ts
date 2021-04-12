@@ -11,9 +11,15 @@ export class PostesService {
 
   Postes: Poste[] = [];
   PostesSubject = new Subject<Poste[]>();
+  private PostesUser: any;
+  PostesSubjectUser = new Subject<Poste[]>();
 
   emitPostes(): void {
     this.PostesSubject.next(this.Postes);
+  }
+
+  emitPostesUser(): void {
+    this.PostesSubjectUser.next(this.PostesUser);
   }
 
   savePostes(): void {
@@ -26,6 +32,16 @@ export class PostesService {
       .on('value', (data: DataSnapshotA) => {
           this.Postes = data.val() ? data.val() : [];
           this.emitPostes();
+        }
+      );
+  }
+
+  getPostesUser(): void {
+    firebase.database().ref('/postes')
+      .on('value', (data: DataSnapshotA) => {
+          this.PostesUser = data.val() ? data.val() : [];
+          this.emitPostesUser();
+          console.log('postesUser', this.PostesUser);
         }
       );
   }
