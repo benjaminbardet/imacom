@@ -9,7 +9,7 @@ import {PosteMaxiService} from '../services/poste-maxi.service';
 export class PosteMaxiComponent implements OnInit {
 
   @Input() poste: any;
-  isLikedByAuthentifiedUser = false;
+  isLikedByAuthentifiedUser = true;
 
   constructor(private posteMaxi: PosteMaxiService) { }
 
@@ -27,6 +27,10 @@ export class PosteMaxiComponent implements OnInit {
 
   hidden(): void {
     this.poste.posteMaxi = false;
+  }
+
+  deletePost(): void {
+    // delete the post
   }
 
 

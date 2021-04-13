@@ -44,3 +44,12 @@
     justify-content: center;
     align-items: center;
   }
+
+#title {
+
+color: #156AFB;
+}
+
+#title:hover {
+  text-decoration: underline;
+}
