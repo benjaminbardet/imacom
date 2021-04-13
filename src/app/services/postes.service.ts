@@ -50,7 +50,7 @@ export class PostesService {
     this.emitPostes();
   }
 
-  removePostes(poste: Poste): void {
+  removePoste(poste: Poste): void {
     const posteIndexToRemove = this.Postes.findIndex(
       (posteEl) => {
         if (posteEl === poste) {

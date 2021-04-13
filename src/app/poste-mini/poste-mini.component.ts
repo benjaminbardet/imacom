@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+
+//import {Poste} from '../models/poste.model';
+//import {PostesService} from '../services/postes.service';
 import {PosteMaxiService} from '../services/poste-maxi.service';
 
 @Component({
@@ -7,6 +10,7 @@ import {PosteMaxiService} from '../services/poste-maxi.service';
   styleUrls: ['./poste-mini.component.css']
 })
 export class PosteMiniComponent {
+
 
   isPublisherAuthentified = true;
   isLikedByAuthentifiedUser = false;

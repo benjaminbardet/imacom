@@ -1,4 +1,5 @@
 export class Poste {
+  id: number;
   image: string;
   description: string;
   categorie: string;
