@@ -1,0 +1,60 @@
+:host {
+  width: 100vw;
+  height: 100vw;
+}
+#poste-maxi {
+  width: 100%;
+  height: calc(100% - 82px);
+  display: flex;
+  position: fixed;
+  z-index: 1000;
+  top: 82px;
+  left: 0;
+  background-color: black
+;
+}
+
+#header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#image {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  flex: 1 1;
+  position: relative;
+}
+
+#image img {
+  object-fit: cover;
+  max-width: 70vw;
+  width: auto;
+  height: auto;
+
+}
+
+#description {
+  flex: 2 0 250px;
+  border-radius: inherit;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+#image:hover .right {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  margin: 5px;
+  transition: display;
+  transition-delay: 0.5s;
+}
+
+.right {
+  display: none;
+}

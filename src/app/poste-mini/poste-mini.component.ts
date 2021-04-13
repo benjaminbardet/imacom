@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {Poste} from '../models/poste.model';
-import {PostesService} from '../services/postes.service';
+
+//import {Poste} from '../models/poste.model';
+//import {PostesService} from '../services/postes.service';
+import {PosteMaxiService} from '../services/poste-maxi.service';
 
 @Component({
   selector: 'app-poste-mini',
@@ -12,16 +14,19 @@ export class PosteMiniComponent {
 
   isPublisherAuthentified = true;
   isLikedByAuthentifiedUser = false;
-  @Input() posteId:number = 0;
-  @Input() description:string= "";
-  @Input() title:string = "";
-  @Input() image:string = "";
- 
+
+  visibleMaxi = false;
+
+  @Input() poste: any;
+
+  constructor(private posteMaxi: PosteMaxiService) {
+  }
+
   setIsPublisherAuthentified(): void{
     // verify if author of the current post is the authentified user
   }
 
-  likedByUser (): void {
+  likedByUser(): void {
     // does everything to make the system know that authentified user has liked  the post
     this.isLikedByAuthentifiedUser = true;
   }
@@ -30,8 +35,13 @@ export class PosteMiniComponent {
     this.isLikedByAuthentifiedUser = false;
   }
 
-  onDeletePoste(posteId: number): void {
-    //delete the post
+  show(): void {
+    console.log(this.poste);
+    this.poste.posteMaxi = true;
+  }
+
+  deletePost(): void {
+    // delete the post
   }
 
 }
