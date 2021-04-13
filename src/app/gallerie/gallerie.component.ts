@@ -25,8 +25,8 @@ export class GallerieComponent implements OnInit, OnDestroy{
     this.postesService.emitPostes();
   }
 
-  onDeleteBook(poste: Poste): void {
-    this.postesService.removePostes(poste);
+  onDeletePoste(poste: Poste): void {
+    this.postesService.removePoste(poste);
   }
 
   ngOnDestroy(): void {

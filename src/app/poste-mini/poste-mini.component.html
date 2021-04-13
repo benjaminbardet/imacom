@@ -33,7 +33,7 @@
 
     <div class="card-body">
         <h5 class="card-title"><a href="route">{{title}}</a></h5>
-        <p>{{(description.length>40)? (description | slice:0:40)+'..':(description) }} </p>
+        <!-- <p>{{(description.length>40)? (description | slice:0:40)+'..':(description) }} </p> -->
     </div>
   </div>
 
@@ -52,7 +52,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-danger" (click)="deletePost()">Delete</button>
+          <button type="button" class="btn btn-danger" (click)="onDeletePoste(this.posteId)">Delete</button>
         </div>
       </div>
     </div>

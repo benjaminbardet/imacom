@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import {Poste} from '../models/poste.model';
+import {PostesService} from '../services/postes.service';
 
 @Component({
   selector: 'app-poste-mini',
@@ -7,8 +9,10 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class PosteMiniComponent {
 
+
   isPublisherAuthentified = true;
   isLikedByAuthentifiedUser = false;
+  @Input() posteId:number = 0;
   @Input() description:string= "";
   @Input() title:string = "";
   @Input() image:string = "";
@@ -26,7 +30,7 @@ export class PosteMiniComponent {
     this.isLikedByAuthentifiedUser = false;
   }
 
-  deletePost(): void {
+  onDeletePoste(posteId: number): void {
     //delete the post
   }
 
