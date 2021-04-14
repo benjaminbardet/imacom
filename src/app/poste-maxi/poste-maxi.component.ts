@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {PosteMaxiService} from '../services/poste-maxi.service';
+import {PostesService} from '../services/postes.service';
 
 @Component({
   selector: 'app-poste-maxi',
@@ -12,7 +12,7 @@ export class PosteMaxiComponent implements OnInit {
   @Input() isMyGallerie = false;
   isLikedByAuthentifiedUser = false;
 
-  constructor(private posteMaxi: PosteMaxiService) { }
+  constructor(private postesService: PostesService) { }
 
   ngOnInit(): void {
   }
@@ -30,8 +30,9 @@ export class PosteMaxiComponent implements OnInit {
     this.poste.posteMaxi = false;
   }
 
-  deletePost(): void {
-    // delete the post
+  onDelete(): void {
+    console.log('to delete : '+ this.poste.id);
+    this.postesService.deletePost(this.poste);
   }
 
 

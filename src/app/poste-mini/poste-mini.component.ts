@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Poste } from '../models/poste.model';
+
 
 //import {Poste} from '../models/poste.model';
 //import {PostesService} from '../services/postes.service';
-import {PosteMaxiService} from '../services/poste-maxi.service';
+import {PostesService} from '../services/postes.service';
 
 @Component({
   selector: 'app-poste-mini',
@@ -20,7 +22,7 @@ export class PosteMiniComponent {
   @Input() poste: any;
   @Input() isMyGallerie = false;
 
-  constructor(private posteMaxi: PosteMaxiService) {
+  constructor(private postesService: PostesService) {
   }
 
   setIsPublisherAuthentified(): void{
@@ -40,8 +42,8 @@ export class PosteMiniComponent {
     this.poste.posteMaxi = true;
   }
 
-  deletePost(): void {
-    // delete the post
+  onDelete(): void {
+    console.log('to delete : '+ this.poste.id);
+    this.postesService.deletePost(this.poste);
   }
-
 }
