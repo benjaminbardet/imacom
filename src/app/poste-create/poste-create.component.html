@@ -1,7 +1,8 @@
 <div class="p-5 m-3" id="block">
-  <H1 class="text-center">Poster une image</H1>
+  <H1 *ngIf="!poste" class="text-center">Poster une image</H1>
+  <H1 *ngIf="poste" class="text-center">Modifier une image</H1>
   <form (ngSubmit)="onSavePostes()" [formGroup]="posteForm">
-    <div class="container py-5">
+    <div class="container py-5" *ngIf="!poste">
       <div class="row py-4">
         <div class="col-lg-6 mx-auto">
           <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
@@ -17,6 +18,9 @@
                                             src="#"></div>
         </div>
       </div>
+    </div>
+    <div *ngIf="poste" class=" d-flex justify-content-center">
+      <img src="{{poste.image}}" class="w-25 h-auto">
     </div>
     <div class="form-group">
       <label for="titre">titre</label>

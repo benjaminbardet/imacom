@@ -59,14 +59,17 @@ export class PostesService {
     firebase.database().ref('/users/' + localStorage.getItem('token') + '/postes')
       .on('value', (data: DataSnapshotA) => {
         this.PostesUser = data.val() ? data.val() : [];
+        console.log('data :', data.val());
         const IDs = Object.keys(this.PostesUser);
         this.PostesUser = Object.keys(this.PostesUser).map(key => {
           return this.PostesUser[key];
         });
 
         for (let i = 0; i < this.PostesUser.length; i++) {
-          this.PostesUser[i].id = IDs[i];
+          this.PostesUser[i].idGallery = parseInt(IDs[i], 10);
+          console.log('postes Users: ', this.PostesUser[i]);
         }
+        console.log('IDs :', IDs);
         this.emitPostesUser();
         }
       );
@@ -146,12 +149,31 @@ export class PostesService {
 
   getPoste(titre: string): Poste {
     let res = null;
-    for (const poste of this.Postes){
+    for (const poste of this.PostesUser){
       if (poste.title === titre) {
         res = poste;
         break;
       }
     }
     return res;
+  }
+
+  updatePoste(poste: Poste, titre: string, id: number): void {
+    console.log(poste.title);
+    for (const p of this.Postes){
+      console.log(p.image);
+      if (p.title === titre) {
+        console.log('///////////////////////////////////////////////////////////////////////////////////////////////////////////////');
+        p.title = poste.title;
+        p.description = poste.description;
+        p.categorie = poste.categorie;
+        p.pays = poste.pays;
+        firebase.database().ref('/users/' + localStorage.getItem('token') + '/postes/' + id).set(p);
+        break;
+      }
+    }
+
+    this.savePostes();
+    this.emitPostes();
   }
 }

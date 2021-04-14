@@ -23,6 +23,7 @@ export class GallerieComponent implements OnInit, OnDestroy{
       this.booksSubscriptionUser = this.postesService.PostesSubjectUser.subscribe(
         (postes: Poste[]) => {
           this.galleryContent = postes;
+          console.log('gallery', this.galleryContent);
         }
       );
       this.postesService.emitPostesUser();

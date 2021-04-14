@@ -16,6 +16,8 @@ export class PosteCreateComponent implements OnInit {
 
   @Input() poste: any;
 
+  titre: any;
+
   posteForm: FormGroup;
   fileIsUploading = false;
   fileUrl: string;
@@ -285,8 +287,8 @@ export class PosteCreateComponent implements OnInit {
     });
     if (this.poste != null){
       console.log('passe');
-      console.log(this.poste);
-      console.log(this.poste.titre as Poste);
+      console.log(this.poste.idGallery);
+      this.titre = (this.poste.title as Poste);
       this.posteForm.get('titre').setValue(this.poste.title as Poste);
       this.posteForm.get('description').setValue(this.poste.description as Poste);
       this.posteForm.get('categorie').setValue(this.poste.categorie as Poste);
@@ -306,10 +308,10 @@ export class PosteCreateComponent implements OnInit {
     if (this.fileUrl && this.fileUrl !== '') {
       newPoste.image = this.fileUrl;
     }
-    if (this.poste != null){
+    if (this.poste == null){
       this.postesService.createNewPoste(newPoste);
     }else{
-      console.log('bugbug');
+      this.postesService.updatePoste(newPoste, this.titre, this.poste.idGallery);
     }
     this.router.navigate(['/']);
   }
