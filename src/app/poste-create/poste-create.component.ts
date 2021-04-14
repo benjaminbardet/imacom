@@ -18,7 +18,57 @@ export class PosteCreateComponent implements OnInit {
   fileIsUploading = false;
   fileUrl: string;
   fileUploaded = false;
+
+  constructor(private formBuilder: FormBuilder, private postesService: PostesService,
+              private authService: AuthService, private router: Router) { }
+
+  ngOnInit(): void {
+    this.initForm();
+  }
+
+  initForm(): void {
+    this.posteForm = this.formBuilder.group({
+      titre: ['', Validators.required],
+      description: ['', Validators.required],
+      image: '',
+      pays: ['', Validators.required],
+      categorie: ['', Validators.required]
+    });
+  }
+
+  onSavePostes(): void {
+    const title = this.posteForm.get('titre').value;
+    const description = this.posteForm.get('description').value;
+    const categorie = this.posteForm.get('categorie').value;
+    const pays = this.posteForm.get('pays').value;
+    const newPoste = new Poste(title);
+    newPoste.description = description;
+    newPoste.categorie = categorie;
+    newPoste.pays = pays;
+    if (this.fileUrl && this.fileUrl !== '') {
+      newPoste.image = this.fileUrl;
+    }
+    this.postesService.createNewPoste(newPoste);
+    this.router.navigate(['/']);
+  }
+
+  onUploadFile(file: File): void {
+    this.fileIsUploading = true;
+    this.postesService.uploadFile(file).then(
+      (url: string) => {
+        this.fileUrl = url;
+        this.fileIsUploading = false;
+        this.fileUploaded = true;
+      }
+    );
+  }
+
+  detectFiles(event): void {
+    this.onUploadFile(event.target.files[0]);
+  }
+
   countries =  [
+    {name: 'No country', code: 'N0'},
     {name: 'Afghanistan', code: 'AF'},
     {name: 'Åland Islands', code: 'AX'},
     {name: 'Albania', code: 'AL'},
@@ -263,53 +313,4 @@ export class PosteCreateComponent implements OnInit {
     {name: 'Zambia', code: 'ZM'},
     {name: 'Zimbabwe', code: 'ZW'}
     ];
-
-  constructor(private formBuilder: FormBuilder, private postesService: PostesService,
-              private authService: AuthService, private router: Router) { }
-
-  ngOnInit(): void {
-    this.initForm();
-  }
-
-  initForm(): void {
-    this.posteForm = this.formBuilder.group({
-      titre: ['', Validators.required],
-      description: ['', Validators.required],
-      image: '',
-      pays: ['', Validators.required],
-      categorie: ['', Validators.required]
-    });
-  }
-
-  onSavePostes(): void {
-    const title = this.posteForm.get('titre').value;
-    const description = this.posteForm.get('description').value;
-    const categorie = this.posteForm.get('categorie').value;
-    const pays = this.posteForm.get('pays').value;
-    const newPoste = new Poste(title);
-    newPoste.description = description;
-    newPoste.categorie = categorie;
-    newPoste.pays = pays;
-    if (this.fileUrl && this.fileUrl !== '') {
-      newPoste.image = this.fileUrl;
-    }
-    this.postesService.createNewPoste(newPoste);
-    this.router.navigate(['/']);
-  }
-
-  onUploadFile(file: File): void {
-    this.fileIsUploading = true;
-    this.postesService.uploadFile(file).then(
-      (url: string) => {
-        this.fileUrl = url;
-        this.fileIsUploading = false;
-        this.fileUploaded = true;
-      }
-    );
-  }
-
-  detectFiles(event): void {
-    this.onUploadFile(event.target.files[0]);
-  }
-
 }

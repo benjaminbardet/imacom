@@ -29,3 +29,7 @@ nav {
   top: 82px;
 }
 
+a:active {
+  text-decoration: underline;
+  color: white;
+}
