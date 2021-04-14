@@ -43,9 +43,6 @@ export class PostesService {
       .on('value', (data: DataSnapshotA) => {
           this.PostesUser = data.val() ? data.val() : [];
           this.emitPostesUser();
-          this.PostesUser = this.PostesUser.filter((el) => {
-            return el !== undefined;
-          });
         }
       );
   }
