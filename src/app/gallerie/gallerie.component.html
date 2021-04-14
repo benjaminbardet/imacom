@@ -1,6 +1,6 @@
 <div class="center">
     <div class="wrapper" >
-        <app-poste-mini *ngFor="let poste of galleryContent"
+        <app-poste-mini [isMyGallerie]="isMyGallerie" *ngFor="let poste of galleryContent"
         [poste]="poste"
         ></app-poste-mini>
     </div>

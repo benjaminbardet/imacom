@@ -9,8 +9,8 @@ import {PosteMaxiService} from '../services/poste-maxi.service';
 export class PosteMaxiComponent implements OnInit {
 
   @Input() poste: any;
+  @Input() isMyGallerie = false;
   isLikedByAuthentifiedUser = false;
-
   constructor(private posteMaxi: PosteMaxiService) { }
 
   ngOnInit(): void {
