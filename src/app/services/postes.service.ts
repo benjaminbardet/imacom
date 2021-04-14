@@ -41,8 +41,11 @@ export class PostesService {
   getPostesUser(): void {
     firebase.database().ref('/users/' + localStorage.getItem('token') + '/postes')
       .on('value', (data: DataSnapshotA) => {
-          this.PostesUser = data.val() ? data.val() : [];
-          this.emitPostesUser();
+        this.PostesUser = data.val() ? data.val() : [];
+        this.PostesUser = Object.keys(this.PostesUser).map(key => {
+          return this.PostesUser[key];
+        });
+        this.emitPostesUser();
         }
       );
   }
