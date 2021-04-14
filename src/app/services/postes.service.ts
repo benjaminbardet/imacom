@@ -4,7 +4,7 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/storage';
 import DataSnapshotA = firebase.database.DataSnapshot;
-import {Subject} from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class PostesService {
@@ -16,7 +16,8 @@ export class PostesService {
   PostesSubjectUser = new Subject<Poste[]>();
 
   emitPostes(): void {
-    this.PostesSubject.next(this.Postes);
+    this.PostesSubject.next(this.Postes.slice());
+    console.log(this.Postes);
   }
 
   emitPostesUser(): void {
@@ -69,7 +70,7 @@ export class PostesService {
     this.emitPostes();
   }
 
-  removePostes(poste: Poste): void {
+  removePoste(poste: Poste): void {
     const posteIndexToRemove = this.Postes.findIndex(
       (posteEl) => {
         if (posteEl === poste) {
@@ -80,6 +81,19 @@ export class PostesService {
     this.Postes.splice(posteIndexToRemove, 1);
     this.savePostes();
     this.emitPostes();
+  }
+
+  recherche(titre: string): void {
+    for (const poste of this.Postes){
+      if (poste.title.includes(titre) || titre === null || titre === ''){
+        poste.recherche = true;
+        console.log('true' + poste.title);
+      }
+      else {
+        poste.recherche = false;
+        console.log('false ' + poste.title);
+      }
+    }
   }
 
 

@@ -11,6 +11,7 @@ export class PosteMaxiComponent implements OnInit {
   @Input() poste: any;
   @Input() isMyGallerie = false;
   isLikedByAuthentifiedUser = false;
+
   constructor(private posteMaxi: PosteMaxiService) { }
 
   ngOnInit(): void {
@@ -27,6 +28,10 @@ export class PosteMaxiComponent implements OnInit {
 
   hidden(): void {
     this.poste.posteMaxi = false;
+  }
+
+  deletePost(): void {
+    // delete the post
   }
 
 

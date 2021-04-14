@@ -32,10 +32,11 @@
   </div>
 
     <div class="card-body">
-        <h5 class="card-title"><a href="route">{{poste.title}}</a></h5>
+        <h5 class="card-title"><a class="title" (click)="show()">{{poste.title}}</a></h5>
         <p>
-            {{(poste.description.length>40)? (poste.description | slice:0:40)+'..':(poste.description) }}
+             <!-- <p>{{(description.length>40)? (description | slice:0:40)+'..':(description) }} </p> -->
         </p>
+
     </div>
   </div>
   <app-poste-maxi [isMyGallerie]="isMyGallerie" [poste]="poste"></app-poste-maxi>

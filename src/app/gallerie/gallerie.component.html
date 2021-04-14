@@ -1,7 +1,8 @@
 <div class="center">
-    <div class="wrapper" >
-        <app-poste-mini [isMyGallerie]="isMyGallerie" *ngFor="let poste of galleryContent"
-        [poste]="poste"
-        ></app-poste-mini>
+    <div class="wrapper" > <!-- Ici est mon problème -->
+      <div *ngFor="let poste of galleryContent" [hidden]="!poste.recherche && !isMyGallerie">
+        <app-poste-mini [isMyGallerie]="isMyGallerie" [poste]="poste">
+        </app-poste-mini>
+      </div>
     </div>
 </div>
