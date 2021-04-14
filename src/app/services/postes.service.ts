@@ -17,7 +17,6 @@ export class PostesService {
 
   emitPostes(): void {
     this.PostesSubject.next(this.Postes.slice());
-    console.log(this.Postes);
   }
 
   emitPostesUser(): void {
@@ -29,11 +28,28 @@ export class PostesService {
     firebase.database().ref('/users/' + localStorage.getItem('token') + '/postes/' + (this.Postes.length - 1)).set(this.Postes[this.Postes.length - 1]);
   }
 
+  likePostes(): void {
+    firebase.database().ref('/users/' + localStorage.getItem('token') + '/likes/' + (this.Postes.length - 1)).set(this.Postes[this.Postes.length - 1]);
+  }
+
   getPostes(): void {
     firebase.database().ref('/postes')
       .on('value', (data: DataSnapshotA) => {
           this.Postes = data.val() ? data.val() : [];
-          console.log('Postes', this.Postes);
+          const list = [];
+          for (let i = 0; i < this.Postes.length; i++) {
+            if (this.Postes[i] === undefined) {
+              list.push(i);
+              console.log(i);
+            } else {
+              this.Postes[i].id = i;
+            }
+          }
+          for (let i = 0; i < list.length; i++) {
+            this.Postes.splice(list[i], 1);
+          }
+          console.log('popo', this.Postes);
+
           this.emitPostes();
         }
       );
@@ -51,7 +67,6 @@ export class PostesService {
         for (let i = 0; i < this.PostesUser.length; i++) {
           this.PostesUser[i].id = IDs[i];
         }
-        console.log('Posteuser', this.PostesUser);
         this.emitPostesUser();
         }
       );
