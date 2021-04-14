@@ -19,11 +19,13 @@ import {AuthGuardService} from './services/auth-guard.service';
 import { PosteMaxiComponent } from './poste-maxi/poste-maxi.component';
 import { PosteCreateComponent } from './poste-create/poste-create.component';
 import {PostesService} from './services/postes.service';
+import { PosteUpdateComponent } from './poste-update/poste-update.component';
 
 const appRoutes: Routes = [
   { path: 'connexion', component: ConnexionComponent },
   { path: 'inscription', component: InscriptionComponent },
   { path: 'poster', canActivate: [AuthGuardService], component: PosteCreateComponent},
+  { path: 'poster/update/:titre', canActivate: [AuthGuardService], component: PosteUpdateComponent},
   { path: '', canActivate: [AuthGuardService], component: AccueilComponent },
   { path: 'magallerie', canActivate: [AuthGuardService], component: MyGallerieComponent },
   { path: 'posteMaxi', canActivate: [AuthGuardService], component: PosteMaxiComponent },
@@ -45,6 +47,7 @@ const appRoutes: Routes = [
     AccueilComponent,
     PosteMaxiComponent,
     PosteCreateComponent,
+    PosteUpdateComponent
   ],
   imports: [
     BrowserModule,

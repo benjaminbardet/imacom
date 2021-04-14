@@ -5,6 +5,8 @@ import { Poste } from '../models/poste.model';
 //import {Poste} from '../models/poste.model';
 //import {PostesService} from '../services/postes.service';
 import {PostesService} from '../services/postes.service';
+import {Router} from '@angular/router';
+import {query} from '@angular/animations';
 
 @Component({
   selector: 'app-poste-mini',
@@ -22,7 +24,7 @@ export class PosteMiniComponent {
   @Input() poste: any;
   @Input() isMyGallerie = false;
 
-  constructor(private postesService: PostesService) {
+  constructor(private postesService: PostesService, private router: Router) {
   }
 
   setIsPublisherAuthentified(): void{
@@ -46,4 +48,12 @@ export class PosteMiniComponent {
     console.log('to delete : '+ this.poste.id);
     this.postesService.deletePost(this.poste);
   }
+
+  onUpdatePoste(): void {
+    console.log('bonjour');
+    const titre = this.poste.title;
+    console.log(this.poste.title);
+    this.router.navigate(['/poster/update', titre]);
+  }
+
 }
