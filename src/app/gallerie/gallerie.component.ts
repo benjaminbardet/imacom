@@ -14,15 +14,15 @@ export class GallerieComponent implements OnInit, OnDestroy{
   @Input() isMyGallerie = false;
   galleryContent: Poste[];
   booksSubscription: Subscription;
+  booksSubscriptionUser: Subscription;
 
   constructor(private postesService: PostesService, private router: Router) {}
 
   ngOnInit(): void{
     if (this.isMyGallerie) {
-      this.booksSubscription = this.postesService.PostesSubjectUser.subscribe(
+      this.booksSubscriptionUser = this.postesService.PostesSubjectUser.subscribe(
         (postes: Poste[]) => {
           this.galleryContent = postes;
-          console.log('mygallerie', this.galleryContent);
         }
       );
       this.postesService.emitPostesUser();
@@ -30,7 +30,6 @@ export class GallerieComponent implements OnInit, OnDestroy{
       this.booksSubscription = this.postesService.PostesSubject.subscribe(
         (postes: Poste[]) => {
           this.galleryContent = postes;
-          console.log('gellarei', this.galleryContent);
         }
       );
       this.postesService.emitPostes();
