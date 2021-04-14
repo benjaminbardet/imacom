@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Poste } from '../models/poste.model';
 import { PostesService } from '../services/postes.service';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../services/auth.service';
+
 
 
 @Component({
@@ -13,6 +14,7 @@ import {AuthService} from '../services/auth.service';
 })
 export class PosteCreateComponent implements OnInit {
 
+  @Input() poste: any;
 
   posteForm: FormGroup;
   fileIsUploading = false;
@@ -265,10 +267,11 @@ export class PosteCreateComponent implements OnInit {
     ];
 
   constructor(private formBuilder: FormBuilder, private postesService: PostesService,
-              private authService: AuthService, private router: Router) { }
+              private authService: AuthService, private router: Router, private route: ActivatedRoute, ) { }
 
   ngOnInit(): void {
     this.initForm();
+    console.log(this.poste);
   }
 
   initForm(): void {
@@ -279,6 +282,15 @@ export class PosteCreateComponent implements OnInit {
       pays: ['', Validators.required],
       categorie: ['', Validators.required]
     });
+    if (this.poste != null){
+      console.log('passe');
+      console.log(this.poste);
+      console.log(this.poste.titre as Poste);
+      this.posteForm.get('titre').setValue(this.poste.title as Poste);
+      this.posteForm.get('description').setValue(this.poste.description as Poste);
+      this.posteForm.get('categorie').setValue(this.poste.categorie as Poste);
+      this.posteForm.get('pays').setValue(this.poste.pays as Poste);
+    }
   }
 
   onSavePostes(): void {
@@ -293,7 +305,11 @@ export class PosteCreateComponent implements OnInit {
     if (this.fileUrl && this.fileUrl !== '') {
       newPoste.image = this.fileUrl;
     }
-    this.postesService.createNewPoste(newPoste);
+    if (this.poste != null){
+      this.postesService.createNewPoste(newPoste);
+    }else{
+      console.log('bugbug');
+    }
     this.router.navigate(['/']);
   }
 
@@ -311,5 +327,7 @@ export class PosteCreateComponent implements OnInit {
   detectFiles(event): void {
     this.onUploadFile(event.target.files[0]);
   }
+
+
 
 }

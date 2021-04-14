@@ -123,4 +123,14 @@ export class PostesService {
     );
   }
 
+  getPoste(titre: string): Poste {
+    let res = null;
+    for (const poste of this.Postes){
+      if (poste.title === titre) {
+        res = poste;
+        break;
+      }
+    }
+    return res;
+  }
 }
