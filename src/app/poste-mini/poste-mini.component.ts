@@ -18,6 +18,7 @@ export class PosteMiniComponent {
   visibleMaxi = false;
 
   @Input() poste: any;
+  @Input() isMyGallerie = false;
 
   constructor(private posteMaxi: PosteMaxiService) {
   }
@@ -36,7 +37,6 @@ export class PosteMiniComponent {
   }
 
   show(): void {
-    console.log(this.poste);
     this.poste.posteMaxi = true;
   }
 

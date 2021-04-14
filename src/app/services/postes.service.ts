@@ -12,13 +12,21 @@ export class PostesService {
   Postes: Poste[] = [];
   PostesSubject = new Subject<Poste[]>();
 
+  PostesUser: Poste[] = [];
+  PostesSubjectUser = new Subject<Poste[]>();
+
   emitPostes(): void {
     this.PostesSubject.next(this.Postes.slice());
     console.log(this.Postes);
   }
 
+  emitPostesUser(): void {
+    this.PostesSubjectUser.next(this.PostesUser);
+  }
+
   savePostes(): void {
     firebase.database().ref('/postes').update(this.Postes);
+    firebase.database().ref('/users/' + localStorage.getItem('token') + '/postes/' + (this.Postes.length - 1)).set(this.Postes[this.Postes.length - 1]);
   }
 
   getPostes(): void {
@@ -26,6 +34,18 @@ export class PostesService {
       .on('value', (data: DataSnapshotA) => {
           this.Postes = data.val() ? data.val() : [];
           this.emitPostes();
+        }
+      );
+  }
+
+  getPostesUser(): void {
+    firebase.database().ref('/users/' + localStorage.getItem('token') + '/postes')
+      .on('value', (data: DataSnapshotA) => {
+          this.PostesUser = data.val() ? data.val() : [];
+          this.emitPostesUser();
+          this.PostesUser = this.PostesUser.filter((el) => {
+            return el !== undefined;
+          });
         }
       );
   }
@@ -79,6 +99,7 @@ export class PostesService {
 
   constructor() {
     this.getPostes();
+    this.getPostesUser();
   }
 
   uploadFile(file: File): any {

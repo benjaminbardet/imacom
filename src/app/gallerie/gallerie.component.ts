@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Poste} from '../models/poste.model';
 import {Subscription} from 'rxjs';
 import {PostesService} from '../services/postes.service';
@@ -11,23 +11,29 @@ import {Router} from '@angular/router';
 })
 export class GallerieComponent implements OnInit, OnDestroy{
 
+  @Input() isMyGallerie = false;
   galleryContent: Poste[];
   booksSubscription: Subscription;
+  booksSubscriptionUser: Subscription;
 
   constructor(private postesService: PostesService, private router: Router) {}
 
   ngOnInit(): void{
-    this.booksSubscription = this.postesService.PostesSubject.subscribe(
-      (Postes: Poste[]) => {
-        this.galleryContent = Postes;
-      }
-    );
-    this.postesService.emitPostes();
-    console.log('debug');
-    console.log(this.galleryContent);
-    console.log(this.postesService.getPostes());
-    console.log(this.postesService.PostesSubject);
-
+    if (this.isMyGallerie) {
+      this.booksSubscriptionUser = this.postesService.PostesSubjectUser.subscribe(
+        (postes: Poste[]) => {
+          this.galleryContent = postes;
+        }
+      );
+      this.postesService.emitPostesUser();
+    } else {
+      this.booksSubscription = this.postesService.PostesSubject.subscribe(
+        (postes: Poste[]) => {
+          this.galleryContent = postes;
+        }
+      );
+      this.postesService.emitPostes();
+    }
   }
 
   onDeletePoste(poste: Poste): void {

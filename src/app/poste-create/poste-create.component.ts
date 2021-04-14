@@ -285,7 +285,7 @@ export class PosteCreateComponent implements OnInit {
 
   onSavePostes(): void {
     const title = this.posteForm.get('titre').value;
-    const author = this.authService.getUser().uid;
+    const author = localStorage.getItem('token');
     const description = this.posteForm.get('description').value;
     const categorie = this.posteForm.get('categorie').value;
     const ville = this.posteForm.get('ville').value;
