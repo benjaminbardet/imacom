@@ -41,6 +41,10 @@ export class GallerieComponent implements OnInit, OnDestroy{
   }
 
   ngOnDestroy(): void {
-    this.booksSubscription.unsubscribe();
+    if (this.isMyGallerie) {
+      this.booksSubscriptionUser.unsubscribe();
+    }else{
+      this.booksSubscription.unsubscribe();
+    }
   }
 }
