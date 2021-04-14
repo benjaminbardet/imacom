@@ -42,6 +42,7 @@
       <div class="form-group col-md-4">
         <label for="pays">Pays</label>
         <select class="form-control" formControlName='pays' id="pays">
+          <option selected value="<?php echo $title; ?>"> </option>
           <option *ngFor="let country of countries" default>{{country.name}}</option>
         </select>
       </div>

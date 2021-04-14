@@ -21,6 +21,7 @@ export class PosteCreateComponent implements OnInit {
   fileUrl: string;
   fileUploaded = false;
   countries =  [
+    {name: 'No country', code: 'N0'},
     {name: 'Afghanistan', code: 'AF'},
     {name: 'Åland Islands', code: 'AX'},
     {name: 'Albania', code: 'AL'},
