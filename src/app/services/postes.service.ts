@@ -103,7 +103,6 @@ export class PostesService {
     }
   }
 
-
   constructor() {
     this.getPostes();
     this.getPostesUser();
@@ -129,5 +128,4 @@ export class PostesService {
       }
     );
   }
-
 }
