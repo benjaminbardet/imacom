@@ -33,6 +33,7 @@ export class PostesService {
     firebase.database().ref('/postes')
       .on('value', (data: DataSnapshotA) => {
           this.Postes = data.val() ? data.val() : [];
+          console.log('Postes', this.Postes);
           this.emitPostes();
         }
       );
@@ -42,9 +43,15 @@ export class PostesService {
     firebase.database().ref('/users/' + localStorage.getItem('token') + '/postes')
       .on('value', (data: DataSnapshotA) => {
         this.PostesUser = data.val() ? data.val() : [];
+        const IDs = Object.keys(this.PostesUser);
         this.PostesUser = Object.keys(this.PostesUser).map(key => {
           return this.PostesUser[key];
         });
+
+        for (let i = 0; i < this.PostesUser.length; i++) {
+          this.PostesUser[i].id = IDs[i];
+        }
+        console.log('Posteuser', this.PostesUser);
         this.emitPostesUser();
         }
       );
