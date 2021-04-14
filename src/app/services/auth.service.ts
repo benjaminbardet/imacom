@@ -26,6 +26,7 @@ export class AuthService {
             this.ngZone.run(() => {
               this.router.navigate(['']);
             });
+            localStorage.setItem('token', result.user.uid);
             this.SetUser(result.user);
           }).catch((error) => {
           window.alert(error.message);
