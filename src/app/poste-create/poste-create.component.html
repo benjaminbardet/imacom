@@ -20,10 +20,16 @@
       </div>
     </div>
     <div *ngIf="poste" class=" d-flex justify-content-center">
-      <img src="{{poste.image}}" class="w-25 h-auto">
+      <img src="{{poste.image}}" style="opacity: 1;
+      display: block;
+      width: 192px;
+      opacity: 1;
+      height: 108px;
+      transition: .5s ease;
+      backface-visibility: hidden;">
     </div>
     <div class="form-group">
-      <label for="titre">titre</label>
+      <label for="titre">Titre</label>
       <input class="form-control" formControlName='titre' id="titre" type="text">
     </div>
     <div class="form-group">
@@ -46,7 +52,7 @@
       <div class="form-group col-md-4">
         <label for="pays">Pays</label>
         <select class="form-control" formControlName='pays' id="pays">
-          <option selected value="<?php echo $title; ?>"> </option>
+          <option selected value=""> </option>
           <option *ngFor="let country of countries" default>{{country.name}}</option>
         </select>
       </div>

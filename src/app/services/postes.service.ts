@@ -148,33 +148,20 @@ export class PostesService {
   }
 
   deletePost(poste: Poste) {
-    console.log("AAA : " + poste.id)
     let id = poste.id; 
-    console.log('&&&&&&&&&&&&&&&&&', poste);
     if(poste.image) {
-      // firebase.database().ref('postes/' + id ).remove();
-      // firebase.database().ref('/users/' + localStorage.getItem('token') + '/postes/' + id ).remove(); // idGallery
-    //   const storageRef = firebase.storage().refFromURL(poste.image);
-    //   storageRef.delete().then(
-    //     () => {
-    //       console.log('image removed');
-    //     },
-    //     (error) => {
-    //       console.log('Could not remove image : ' + error);
-    //     }
-    //   );
-    // }
-    // const bookIndexToRemove = this.Postes.findIndex(
-    //   (bookEl) => {
-    //     if(bookEl === poste) {
-    //       return true;
-    //     }
-    //   }
-    // );
-    }
-    // this.Postes.splice(bookIndexToRemove, 1);
-    this.savePostes();
-    this.emitPostes();
+      firebase.database().ref('/postes/' + id).remove();
+      firebase.database().ref('/users/' + localStorage.getItem('token') + '/postes/' + poste.idGallery ).remove();
+      const storageRef = firebase.storage().refFromURL(poste.image);
+      storageRef.delete().then(
+        () => {
+          console.log('image removed');
+        },
+        (error) => {
+          console.log('Could not remove image : ' + error);
+        }
+      );
+    } 
   }
 
 
