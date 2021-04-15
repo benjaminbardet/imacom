@@ -147,6 +147,24 @@ export class PostesService {
     );
   }
 
+  deletePost(poste: Poste) {
+    let id = poste.id; 
+    if(poste.image) {
+      firebase.database().ref('/postes/' + id).remove();
+      firebase.database().ref('/users/' + localStorage.getItem('token') + '/postes/' + poste.idGallery ).remove();
+      const storageRef = firebase.storage().refFromURL(poste.image);
+      storageRef.delete().then(
+        () => {
+          console.log('image removed');
+        },
+        (error) => {
+          console.log('Could not remove image : ' + error);
+        }
+      );
+    } 
+  }
+
+
   getPoste(titre: string): Poste {
     let res = null;
     for (const poste of this.PostesUser){
